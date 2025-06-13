@@ -42,6 +42,27 @@ namespace AppDevActivity1
             }
         }
 
+        // Module 2: Add student
+        static void AddStudent()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Add New Student ===");
+            Console.Write("Full Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Course: ");
+            string course = Console.ReadLine();
+
+            students.Add(new Student
+            {
+                Id = nextId++,
+                FullName = name,
+                Course = course
+            });
+
+            Console.WriteLine("Student added! Press Enter to continue.");
+            Console.ReadLine();
+        }
+
 
     }
 }

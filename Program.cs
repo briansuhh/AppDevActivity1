@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppDevActivity1
 {
@@ -11,6 +9,7 @@ namespace AppDevActivity1
         // In-memory list of students
         static List<Student> students = new List<Student>();
         static int nextId = 1;
+
         static void Main(string[] args)
         {
             ShowMenu();
@@ -42,6 +41,109 @@ namespace AppDevActivity1
             }
         }
 
+        // Module 2: Add student
+        static void AddStudent()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Add New Student ===");
+            Console.Write("Full Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Course: ");
+            string course = Console.ReadLine();
 
+            students.Add(new Student
+            {
+                Id = nextId++,
+                FullName = name,
+                Course = course
+            });
+
+            Console.WriteLine("Student added! Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Module 3: List students
+        static void ListStudents()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Student List ===");
+
+            if (students.Count == 0)
+            {
+                Console.WriteLine("No students found.");
+            }
+            else
+            {
+                foreach (var s in students)
+                {
+                    Console.WriteLine($"ID: {s.Id}, Name: {s.FullName}, Course: {s.Course}");
+                }
+            }
+
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Module 4: Search student
+        static void SearchStudent()
+        {
+            Console.Clear();
+            Console.Write("Enter name to search: ");
+            string query = Console.ReadLine();
+
+            var found = students
+                .Where(s => s.FullName.ToLower().Contains(query.ToLower()))
+                .ToList();
+
+            if (found.Count == 0)
+            {
+                Console.WriteLine("No matching student found.");
+            }
+            else
+            {
+                foreach (var s in found)
+                {
+                    Console.WriteLine($"ID: {s.Id}, Name: {s.FullName}, Course: {s.Course}");
+                }
+            }
+
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Module 5: Delete student
+        static void DeleteStudent()
+        {
+            Console.Clear();
+            Console.Write("Enter ID to delete: ");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                var student = students.FirstOrDefault(s => s.Id == id);
+                if (student != null)
+                {
+                    students.Remove(student);
+                    Console.WriteLine("Student deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("Student not found.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
+
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Inner class for student data
+        class Student
+        {
+            public int Id { get; set; }
+            public string FullName { get; set; }
+            public string Course { get; set; }
+        }
     }
 }

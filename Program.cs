@@ -53,7 +53,7 @@ namespace AppDevActivity1
 
             students.Add(new Student
             {
-                Id = nextId+,
+                Id = nextId++,
                 FullName = name,
                 Course = course
             });

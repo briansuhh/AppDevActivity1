@@ -111,6 +111,39 @@ namespace AppDevActivity1
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
+        // Module 5: Delete student
+        static void DeleteStudent()
+        {
+            Console.Clear();
+            Console.Write("Enter ID to delete: ");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                var student = students.FirstOrDefault(s => s.Id == id);
+                if (student != null)
+                {
+                    students.Remove(student);
+                    Console.WriteLine("Student deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("Student not found.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
 
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+        // Inner class for student data
+        class Student
+        {
+            public int Id { get; set; }
+            public string FullName { get; set; }
+            public string Course { get; set; }
+        }
     }
 }

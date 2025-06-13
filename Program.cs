@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppDevActivity1
 {
@@ -11,6 +9,7 @@ namespace AppDevActivity1
         // In-memory list of students
         static List<Student> students = new List<Student>();
         static int nextId = 1;
+
         static void Main(string[] args)
         {
             ShowMenu();
@@ -111,6 +110,7 @@ namespace AppDevActivity1
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
+
         // Module 5: Delete student
         static void DeleteStudent()
         {

@@ -63,6 +63,26 @@ namespace AppDevActivity1
             Console.ReadLine();
         }
 
+        // Module 3: List students
+        static void ListStudents()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Student List ===");
 
+            if (students.Count == 0)
+            {
+                Console.WriteLine("No students found.");
+            }
+            else
+            {
+                foreach (var s in students)
+                {
+                    Console.WriteLine($"ID: {s.Id}, Name: {s.FullName}, Course: {s.Course}");
+                }
+            }
+
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
     }
 }

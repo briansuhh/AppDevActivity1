@@ -84,5 +84,33 @@ namespace AppDevActivity1
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
+
+        // Module 4: Search student
+        static void SearchStudent()
+        {
+            Console.Clear();
+            Console.Write("Enter name to search: ");
+            string query = Console.ReadLine();
+
+            var found = students
+                .Where(s => s.FullName.ToLower().Contains(query.ToLower()))
+                .ToList();
+
+            if (found.Count == 0)
+            {
+                Console.WriteLine("No matching student found.");
+            }
+            else
+            {
+                foreach (var s in found)
+                {
+                    Console.WriteLine($"ID: {s.Id}, Name: {s.FullName}, Course: {s.Course}");
+                }
+            }
+
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
     }
 }
